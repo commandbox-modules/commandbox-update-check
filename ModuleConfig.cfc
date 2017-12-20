@@ -30,7 +30,12 @@ component {
         	if( isBoolean( settings.systemModulesCheck ) && settings.systemModulesCheck ) {	
         		systemOutput( '', true );
 	        	systemOutput( 'Checking to see if your system modules are current...', true );	            
-	            shell.callCommand( 'outdated --system' );        		
+	            shell.printString( 
+	            	wirebox.getInstance( name='commandDSL', initArguments={ name : 'outdated' } )
+		            	.flags( 'system' )
+		            	.run( returnOutput=true )
+		            	.replaceNoCase( "'update", "'update --system", "all" )
+		       	);
         	}        	
             
         }
