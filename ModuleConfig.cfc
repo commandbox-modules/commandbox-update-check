@@ -22,14 +22,15 @@ component {
         if( interceptData.shellType == 'interactive' && isBoolean( settings.enable ) && settings.enable ) {
         	
         	if( isBoolean( settings.CLIcheck ) && settings.CLIcheck ) {
-	        	systemOutput( '', true );
-	        	systemOutput( 'Checking to see if your CLI version is current...', true );
+        		var cr = chr( 10 );
+	        	shell.printString( cr );
+	        	shell.printString( 'Checking to see if your CLI version is current...' & cr );
 	            shell.callCommand( 'upgrade' & ( settings.latest ? ' --latest' : '' ) );
         	}
         	
         	if( isBoolean( settings.systemModulesCheck ) && settings.systemModulesCheck ) {	
-        		systemOutput( '', true );
-	        	systemOutput( 'Checking to see if your system modules are current...', true );	            
+        		shell.printString(  cr );
+	        	shell.printString( 'Checking to see if your system modules are current...' & cr );	            
 	            shell.printString( 
 	            	wirebox.getInstance( name='commandDSL', initArguments={ name : 'outdated' } )
 		            	.flags( 'system' )
