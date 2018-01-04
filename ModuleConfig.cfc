@@ -20,6 +20,11 @@ component {
     	
     	// Only run for interactive shell
         if( interceptData.shellType == 'interactive' && isBoolean( settings.enable ) && settings.enable ) {
+    
+    		// Abort if there is a dateLastChecked setting, it's a date, and it's within the last day
+    		if( !isNull( settings.dateLastChecked ) && isDate( settings.dateLastChecked ) && dateDiff( 'd', settings.dateLastChecked, now() ) < 1 ) {
+    			return;
+    		}   
         	
         	if( isBoolean( settings.CLIcheck ) && settings.CLIcheck ) {
         		var cr = chr( 10 );
@@ -39,6 +44,12 @@ component {
 		       	);
         	}        	
             
+            
+            configService = wirebox.getInstance( 'configService' );
+			var configSettings = ConfigService.getconfigSettings();
+			configSettings[ 'modules' ][ 'commandbox-update-check' ][ 'dateLastChecked' ] = now(); 
+			configService.setConfigSettings( configSettings );
+	
         }
         
     }
