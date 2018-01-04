@@ -1,8 +1,8 @@
 {
     "name":"CommandBox Update Check",
-    "version":"1.1.2",
+    "version":"1.2.0",
     "author":"Brad Wood",
-    "location":"commandbox-modules/commandbox-update-check#v1.1.2",
+    "location":"commandbox-modules/commandbox-update-check#v1.2.0",
     "homepage":"https://github.com/commandbox-modules/commandbox-update-check/",
     "documentation":"",
     "repository":{
