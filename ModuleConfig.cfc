@@ -18,6 +18,8 @@ component {
 	
     function onCLIStart( interceptData ) {
     	
+   		var cr = chr( 10 );
+	        		
 	    try {
 
 	    	// Only run for interactive shell
@@ -29,7 +31,6 @@ component {
 	    		}   
 	        	
 	        	if( isBoolean( settings.CLIcheck ) && settings.CLIcheck ) {
-	        		var cr = chr( 10 );
 		        	shell.printString( cr );
 		        	shell.printString( 'Checking to see if your CLI version is current...' & cr );
 		            shell.callCommand( 'upgrade' & ( settings.latest ? ' --latest' : '' ) );
@@ -56,7 +57,9 @@ component {
 
         } catch ( any e ) {
 
-        	shell.printString( 'Ouch! I was not able to check for updates for some reason. Make sure you are connected to the internet.' );
+        	shell.printString( 'Ouch! I was not able to check for updates for some reason. Make sure you are connected to the internet.' & cr  );
+        	shell.printString( e.message & cr  );
+        	shell.printString( cr );
 
         }
         
