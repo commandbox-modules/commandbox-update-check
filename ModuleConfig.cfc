@@ -41,9 +41,9 @@ component {
 		        	shell.printString( 'Checking to see if your system modules are current...' & cr );	            
 		            shell.printString( 
 		            	wirebox.getInstance( name='commandDSL', initArguments={ name : 'outdated' } )
-			            	.flags( 'system' )
+			            	.flags( 'system', 'hideUpToDate' )
 			            	.run( returnOutput=true )
-			            	.replaceNoCase( "'update", "'update --system", "all" )
+			            	.replaceNoCase( "'update", "'update --system ", "all" )
 			       	);
 	        	}        	
 	            
