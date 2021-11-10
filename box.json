@@ -2,7 +2,7 @@
     "name":"CommandBox Update Check",
     "version":"1.3.0",
     "author":"Brad Wood",
-    "location":"commandbox-modules/commandbox-update-check#v1.3.0",
+    "location":"forgeboxstorage",
     "homepage":"https://github.com/commandbox-modules/commandbox-update-check/",
     "documentation":"",
     "repository":{
@@ -14,7 +14,6 @@
     "shortDescription":"Always make sure your CLI and system modules are up to date!",
     "type":"commandbox-modules",
     "scripts":{
-        "postVersion":"package set location='commandbox-modules/commandbox-update-check#v`package version`'",
         "onRelease":"publish",
         "postPublish":"!git push --follow-tags"
     }
