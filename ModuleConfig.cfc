@@ -29,7 +29,12 @@ component {
 	    		if( !isNull( settings.dateLastChecked ) && isDate( settings.dateLastChecked ) && dateDiff( 'd', settings.dateLastChecked, now() ) < 1 ) {
 	    			return;
 	    		}   
-	        	
+
+				if( wirebox.getInstance( 'configService' ).getSetting( 'offlineMode', false ) ) {
+		        	shell.printString( 'CommandBox is in offline mode, skipping update checks.' & cr  );
+					return;	
+				}
+					        	
 	        	if( isBoolean( settings.CLIcheck ) && settings.CLIcheck ) {
 		        	shell.printString( cr );
 		        	shell.printString( 'Checking to see if your CLI version is current...' & cr );
@@ -43,7 +48,6 @@ component {
 		            	wirebox.getInstance( name='commandDSL', initArguments={ name : 'outdated' } )
 			            	.flags( 'system', 'hideUpToDate' )
 			            	.run( returnOutput=true )
-			            	.replaceNoCase( "'update", "'update --system ", "all" )
 			       	);
 	        	}        	
 	            
